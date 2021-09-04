@@ -1,0 +1,69 @@
+﻿@model IEnumerable<QuickFood.Models.client>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Ajouter nouveau", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nom prenom Client
+        </th>
+        <th>
+           Telephone Client
+        </th>
+        <th>
+         Adresse Client
+        </th>
+        <th>
+           Email Client
+        </th>
+        <th>
+          Date Naissance Client
+        </th>
+        <th>
+           Sexe Client
+        </th>
+        <th>
+           Ville Client
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_pre_client)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel_client)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adr_cl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email_cl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_nai_cl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sexe_cl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ville.nom_ville)
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "Edit", new { id=item.idclient }) |
+            @Html.ActionLink("Detail", "Details", new { id=item.idclient }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.idclient })
+        </td>
+    </tr>
+}
+
+</table>

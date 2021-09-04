@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="base_quickModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="idclient" />
+    </Key>
+    <Property Name="idclient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_pre_client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel_client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="adr_cl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email_cl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date_nai_cl" Type="DateTime" Precision="3" />
+    <Property Name="sexe_cl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_ville" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ville" Relationship="Self.FK_cl_ville" FromRole="client" ToRole="ville" />
+    <NavigationProperty Name="commande" Relationship="Self.FK_cmd_clt" FromRole="client" ToRole="commande" />
+  </EntityType>
+  <EntityType Name="commande">
+    <Key>
+      <PropertyRef Name="id_cmd" />
+    </Key>
+    <Property Name="id_cmd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_cmd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="type_pay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lat" Type="Double" />
+    <Property Name="long" Type="Double" />
+    <Property Name="id_liv" Type="Int32" Nullable="false" />
+    <Property Name="idclient" Type="Int32" Nullable="false" />
+    <Property Name="id_plat" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="client" Relationship="Self.FK_cmd_clt" FromRole="commande" ToRole="client" />
+    <NavigationProperty Name="detail_cmd" Relationship="Self.FK_detcom_com" FromRole="commande" ToRole="detail_cmd" />
+    <NavigationProperty Name="livreur" Relationship="Self.FK_liv_com" FromRole="commande" ToRole="livreur" />
+  </EntityType>
+  <EntityType Name="detail_cmd">
+    <Key>
+      <PropertyRef Name="id_ds" />
+    </Key>
+    <Property Name="id_ds" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cmd" Type="Int32" Nullable="false" />
+    <Property Name="id_platss" Type="Int32" Nullable="false" />
+    <Property Name="quantite" Type="Int32" />
+    <NavigationProperty Name="commande" Relationship="Self.FK_detcom_com" FromRole="detail_cmd" ToRole="commande" />
+    <NavigationProperty Name="platss" Relationship="Self.FK_dbo_platss_dcmd" FromRole="detail_cmd" ToRole="platss" />
+  </EntityType>
+  <EntityType Name="gouvernorat">
+    <Key>
+      <PropertyRef Name="id_gov" />
+    </Key>
+    <Property Name="id_gov" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_gov" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ville" Relationship="Self.FK_gov_ville" FromRole="gouvernorat" ToRole="ville" />
+  </EntityType>
+  <EntityType Name="livreur">
+    <Key>
+      <PropertyRef Name="id_liv" />
+    </Key>
+    <Property Name="id_liv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_liv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel_liv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="commande" Relationship="Self.FK_liv_com" FromRole="livreur" ToRole="commande" />
+    <NavigationProperty Name="note_livreure" Relationship="Self.FK_livreur_note" FromRole="livreur" ToRole="note_livreure" />
+    <NavigationProperty Name="trace_liv" Relationship="Self.FK_trace_liv" FromRole="livreur" ToRole="trace_liv" />
+  </EntityType>
+  <EntityType Name="note_livreure">
+    <Key>
+      <PropertyRef Name="id_note_liv" />
+    </Key>
+    <Property Name="id_note_liv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="note_liv" Type="Int32" />
+    <Property Name="id_liv" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="livreur" Relationship="Self.FK_livreur_note" FromRole="note_livreure" ToRole="livreur" />
+  </EntityType>
+  <EntityType Name="note_plat">
+    <Key>
+      <PropertyRef Name="id_note_plat" />
+    </Key>
+    <Property Name="id_note_plat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="note_plat1" Type="Int32" />
+    <Property Name="id_platss" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="platss" Relationship="Self.FK_plat_note" FromRole="note_plat" ToRole="platss" />
+  </EntityType>
+  <EntityType Name="note_resto">
+    <Key>
+      <PropertyRef Name="id_note_res" />
+    </Key>
+    <Property Name="id_note_res" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="note_res" Type="Int32" />
+    <Property Name="id_resto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="resto" Relationship="Self.FK_resto_note" FromRole="note_resto" ToRole="resto" />
+  </EntityType>
+  <EntityType Name="platss">
+    <Key>
+      <PropertyRef Name="id_platss" />
+    </Key>
+    <Property Name="id_platss" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_plat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="descrip_plat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="prix_plat" Type="Double" />
+    <Property Name="id_resto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="detail_cmd" Relationship="Self.FK_dbo_platss_dcmd" FromRole="platss" ToRole="detail_cmd" />
+    <NavigationProperty Name="note_plat" Relationship="Self.FK_plat_note" FromRole="platss" ToRole="note_plat" />
+    <NavigationProperty Name="resto" Relationship="Self.FK_resto_platss" FromRole="platss" ToRole="resto" />
+  </EntityType>
+  <EntityType Name="resto">
+    <Key>
+      <PropertyRef Name="id_resto" />
+    </Key>
+    <Property Name="id_resto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_resto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel_resto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="adr_resto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fourchette" Type="Int32" />
+    <Property Name="id_sp" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="note_resto" Relationship="Self.FK_resto_note" FromRole="resto" ToRole="note_resto" />
+    <NavigationProperty Name="platss" Relationship="Self.FK_resto_platss" FromRole="resto" ToRole="platss" />
+    <NavigationProperty Name="specialite" Relationship="Self.FK_sp_resto" FromRole="resto" ToRole="specialite" />
+  </EntityType>
+  <EntityType Name="specialite">
+    <Key>
+      <PropertyRef Name="id_sp" />
+    </Key>
+    <Property Name="id_sp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_sp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="resto" Relationship="Self.FK_sp_resto" FromRole="specialite" ToRole="resto" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trace_liv">
+    <Key>
+      <PropertyRef Name="id_trace" />
+    </Key>
+    <Property Name="id_trace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_liv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="heure_liv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_liv" Type="Int32" />
+    <NavigationProperty Name="livreur" Relationship="Self.FK_trace_liv" FromRole="trace_liv" ToRole="livreur" />
+  </EntityType>
+  <EntityType Name="ville">
+    <Key>
+      <PropertyRef Name="id_ville" />
+    </Key>
+    <Property Name="id_ville" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_gov" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="client" Relationship="Self.FK_cl_ville" FromRole="ville" ToRole="client" />
+    <NavigationProperty Name="gouvernorat" Relationship="Self.FK_gov_ville" FromRole="ville" ToRole="gouvernorat" />
+  </EntityType>
+  <Association Name="FK_cl_ville">
+    <End Role="ville" Type="Self.ville" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ville">
+        <PropertyRef Name="id_ville" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="id_ville" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cmd_clt">
+    <End Role="client" Type="Self.client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="commande" Type="Self.commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="idclient" />
+      </Principal>
+      <Dependent Role="commande">
+        <PropertyRef Name="idclient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_detcom_com">
+    <End Role="commande" Type="Self.commande" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="detail_cmd" Type="Self.detail_cmd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="commande">
+        <PropertyRef Name="id_cmd" />
+      </Principal>
+      <Dependent Role="detail_cmd">
+        <PropertyRef Name="id_cmd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_liv_com">
+    <End Role="livreur" Type="Self.livreur" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="commande" Type="Self.commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livreur">
+        <PropertyRef Name="id_liv" />
+      </Principal>
+      <Dependent Role="commande">
+        <PropertyRef Name="id_liv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_platss_dcmd">
+    <End Role="platss" Type="Self.platss" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="detail_cmd" Type="Self.detail_cmd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="platss">
+        <PropertyRef Name="id_platss" />
+      </Principal>
+      <Dependent Role="detail_cmd">
+        <PropertyRef Name="id_platss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_gov_ville">
+    <End Role="gouvernorat" Type="Self.gouvernorat" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ville" Type="Self.ville" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gouvernorat">
+        <PropertyRef Name="id_gov" />
+      </Principal>
+      <Dependent Role="ville">
+        <PropertyRef Name="id_gov" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_livreur_note">
+    <End Role="livreur" Type="Self.livreur" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="note_livreure" Type="Self.note_livreure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livreur">
+        <PropertyRef Name="id_liv" />
+      </Principal>
+      <Dependent Role="note_livreure">
+        <PropertyRef Name="id_liv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trace_liv">
+    <End Role="livreur" Type="Self.livreur" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trace_liv" Type="Self.trace_liv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livreur">
+        <PropertyRef Name="id_liv" />
+      </Principal>
+      <Dependent Role="trace_liv">
+        <PropertyRef Name="id_liv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_plat_note">
+    <End Role="platss" Type="Self.platss" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="note_plat" Type="Self.note_plat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="platss">
+        <PropertyRef Name="id_platss" />
+      </Principal>
+      <Dependent Role="note_plat">
+        <PropertyRef Name="id_platss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_resto_note">
+    <End Role="resto" Type="Self.resto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="note_resto" Type="Self.note_resto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resto">
+        <PropertyRef Name="id_resto" />
+      </Principal>
+      <Dependent Role="note_resto">
+        <PropertyRef Name="id_resto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_resto_platss">
+    <End Role="resto" Type="Self.resto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="platss" Type="Self.platss" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resto">
+        <PropertyRef Name="id_resto" />
+      </Principal>
+      <Dependent Role="platss">
+        <PropertyRef Name="id_resto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sp_resto">
+    <End Role="specialite" Type="Self.specialite" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="resto" Type="Self.resto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specialite">
+        <PropertyRef Name="id_sp" />
+      </Principal>
+      <Dependent Role="resto">
+        <PropertyRef Name="id_sp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="base_quickEntities8" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="commande" EntityType="Self.commande" />
+    <EntitySet Name="detail_cmd" EntityType="Self.detail_cmd" />
+    <EntitySet Name="gouvernorat" EntityType="Self.gouvernorat" />
+    <EntitySet Name="livreur" EntityType="Self.livreur" />
+    <EntitySet Name="note_livreure" EntityType="Self.note_livreure" />
+    <EntitySet Name="note_plat" EntityType="Self.note_plat" />
+    <EntitySet Name="note_resto" EntityType="Self.note_resto" />
+    <EntitySet Name="platss" EntityType="Self.platss" />
+    <EntitySet Name="resto" EntityType="Self.resto" />
+    <EntitySet Name="specialite" EntityType="Self.specialite" />
+    <EntitySet Name="Table" EntityType="Self.Table" />
+    <EntitySet Name="trace_liv" EntityType="Self.trace_liv" />
+    <EntitySet Name="ville" EntityType="Self.ville" />
+    <AssociationSet Name="FK_cl_ville" Association="Self.FK_cl_ville">
+      <End Role="ville" EntitySet="ville" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cmd_clt" Association="Self.FK_cmd_clt">
+      <End Role="client" EntitySet="client" />
+      <End Role="commande" EntitySet="commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_detcom_com" Association="Self.FK_detcom_com">
+      <End Role="commande" EntitySet="commande" />
+      <End Role="detail_cmd" EntitySet="detail_cmd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_liv_com" Association="Self.FK_liv_com">
+      <End Role="livreur" EntitySet="livreur" />
+      <End Role="commande" EntitySet="commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_platss_dcmd" Association="Self.FK_dbo_platss_dcmd">
+      <End Role="platss" EntitySet="platss" />
+      <End Role="detail_cmd" EntitySet="detail_cmd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_gov_ville" Association="Self.FK_gov_ville">
+      <End Role="gouvernorat" EntitySet="gouvernorat" />
+      <End Role="ville" EntitySet="ville" />
+    </AssociationSet>
+    <AssociationSet Name="FK_livreur_note" Association="Self.FK_livreur_note">
+      <End Role="livreur" EntitySet="livreur" />
+      <End Role="note_livreure" EntitySet="note_livreure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trace_liv" Association="Self.FK_trace_liv">
+      <End Role="livreur" EntitySet="livreur" />
+      <End Role="trace_liv" EntitySet="trace_liv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_plat_note" Association="Self.FK_plat_note">
+      <End Role="platss" EntitySet="platss" />
+      <End Role="note_plat" EntitySet="note_plat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_resto_note" Association="Self.FK_resto_note">
+      <End Role="resto" EntitySet="resto" />
+      <End Role="note_resto" EntitySet="note_resto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_resto_platss" Association="Self.FK_resto_platss">
+      <End Role="resto" EntitySet="resto" />
+      <End Role="platss" EntitySet="platss" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sp_resto" Association="Self.FK_sp_resto">
+      <End Role="specialite" EntitySet="specialite" />
+      <End Role="resto" EntitySet="resto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

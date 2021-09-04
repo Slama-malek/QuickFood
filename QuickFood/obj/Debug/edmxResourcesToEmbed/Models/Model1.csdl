@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="base_quickModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="idclient" />
+    </Key>
+    <Property Name="idclient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_pre_client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel_client" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="adr_cl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email_cl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date_nai_cl" Type="DateTime" Precision="3" />
+    <Property Name="sexe_cl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_ville" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ville" Relationship="Self.FK_cl_ville" FromRole="client" ToRole="ville" />
+  </EntityType>
+  <EntityType Name="gouvernorat">
+    <Key>
+      <PropertyRef Name="id_gov" />
+    </Key>
+    <Property Name="id_gov" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_gov" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ville" Relationship="Self.FK_gov_ville" FromRole="gouvernorat" ToRole="ville" />
+  </EntityType>
+  <EntityType Name="ville">
+    <Key>
+      <PropertyRef Name="id_ville" />
+    </Key>
+    <Property Name="id_ville" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_gov" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="client" Relationship="Self.FK_cl_ville" FromRole="ville" ToRole="client" />
+    <NavigationProperty Name="gouvernorat" Relationship="Self.FK_gov_ville" FromRole="ville" ToRole="gouvernorat" />
+  </EntityType>
+  <Association Name="FK_cl_ville">
+    <End Role="ville" Type="Self.ville" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ville">
+        <PropertyRef Name="id_ville" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="id_ville" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_gov_ville">
+    <End Role="gouvernorat" Type="Self.gouvernorat" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ville" Type="Self.ville" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gouvernorat">
+        <PropertyRef Name="id_gov" />
+      </Principal>
+      <Dependent Role="ville">
+        <PropertyRef Name="id_gov" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="base_quickEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="gouvernorat" EntityType="Self.gouvernorat" />
+    <EntitySet Name="ville" EntityType="Self.ville" />
+    <AssociationSet Name="FK_cl_ville" Association="Self.FK_cl_ville">
+      <End Role="ville" EntitySet="ville" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_gov_ville" Association="Self.FK_gov_ville">
+      <End Role="gouvernorat" EntitySet="gouvernorat" />
+      <End Role="ville" EntitySet="ville" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

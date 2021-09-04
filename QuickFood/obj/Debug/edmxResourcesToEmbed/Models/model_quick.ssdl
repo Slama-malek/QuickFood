@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="base_quickModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="idclient" />
+    </Key>
+    <Property Name="idclient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_pre_client" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel_client" Type="nvarchar" MaxLength="50" />
+    <Property Name="adr_cl" Type="nvarchar" MaxLength="50" />
+    <Property Name="email_cl" Type="nvarchar" MaxLength="50" />
+    <Property Name="date_nai_cl" Type="datetime" />
+    <Property Name="sexe_cl" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_ville" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="commande">
+    <Key>
+      <PropertyRef Name="id_cmd" />
+    </Key>
+    <Property Name="id_cmd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_cmd" Type="nvarchar" MaxLength="50" />
+    <Property Name="type_pay" Type="nvarchar" MaxLength="50" />
+    <Property Name="lat" Type="float" />
+    <Property Name="long" Type="float" />
+    <Property Name="id_liv" Type="int" Nullable="false" />
+    <Property Name="idclient" Type="int" Nullable="false" />
+    <Property Name="id_plat" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="detail_cmd">
+    <Key>
+      <PropertyRef Name="id_ds" />
+    </Key>
+    <Property Name="id_ds" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_cmd" Type="int" Nullable="false" />
+    <Property Name="id_platss" Type="int" Nullable="false" />
+    <Property Name="quantite" Type="int" />
+  </EntityType>
+  <EntityType Name="gouvernorat">
+    <Key>
+      <PropertyRef Name="id_gov" />
+    </Key>
+    <Property Name="id_gov" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_gov" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="livreur">
+    <Key>
+      <PropertyRef Name="id_liv" />
+    </Key>
+    <Property Name="id_liv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_liv" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel_liv" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="note_livreure">
+    <Key>
+      <PropertyRef Name="id_note_liv" />
+    </Key>
+    <Property Name="id_note_liv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="note_liv" Type="int" />
+    <Property Name="id_liv" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="note_plat">
+    <Key>
+      <PropertyRef Name="id_note_plat" />
+    </Key>
+    <Property Name="id_note_plat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="note_plat" Type="int" />
+    <Property Name="id_platss" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="note_resto">
+    <Key>
+      <PropertyRef Name="id_note_res" />
+    </Key>
+    <Property Name="id_note_res" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="note_res" Type="int" />
+    <Property Name="id_resto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="platss">
+    <Key>
+      <PropertyRef Name="id_platss" />
+    </Key>
+    <Property Name="id_platss" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_plat" Type="nvarchar" MaxLength="50" />
+    <Property Name="descrip_plat" Type="nvarchar" MaxLength="50" />
+    <Property Name="prix_plat" Type="float" />
+    <Property Name="id_resto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="resto">
+    <Key>
+      <PropertyRef Name="id_resto" />
+    </Key>
+    <Property Name="id_resto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_resto" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel_resto" Type="nvarchar" MaxLength="50" />
+    <Property Name="adr_resto" Type="nvarchar" MaxLength="50" />
+    <Property Name="description" Type="nvarchar" MaxLength="50" />
+    <Property Name="fourchette" Type="int" />
+    <Property Name="id_sp" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="specialite">
+    <Key>
+      <PropertyRef Name="id_sp" />
+    </Key>
+    <Property Name="id_sp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_sp" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trace_liv">
+    <Key>
+      <PropertyRef Name="id_trace" />
+    </Key>
+    <Property Name="id_trace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_liv" Type="nvarchar" MaxLength="50" />
+    <Property Name="heure_liv" Type="nvarchar" MaxLength="50" />
+    <Property Name="date" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_liv" Type="int" />
+  </EntityType>
+  <EntityType Name="ville">
+    <Key>
+      <PropertyRef Name="id_ville" />
+    </Key>
+    <Property Name="id_ville" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_ville" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_gov" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_cl_ville">
+    <End Role="ville" Type="Self.ville" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ville">
+        <PropertyRef Name="id_ville" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="id_ville" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cmd_clt">
+    <End Role="client" Type="Self.client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="commande" Type="Self.commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="idclient" />
+      </Principal>
+      <Dependent Role="commande">
+        <PropertyRef Name="idclient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_platss_dcmd">
+    <End Role="platss" Type="Self.platss" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="detail_cmd" Type="Self.detail_cmd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="platss">
+        <PropertyRef Name="id_platss" />
+      </Principal>
+      <Dependent Role="detail_cmd">
+        <PropertyRef Name="id_platss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_detcom_com">
+    <End Role="commande" Type="Self.commande" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="detail_cmd" Type="Self.detail_cmd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="commande">
+        <PropertyRef Name="id_cmd" />
+      </Principal>
+      <Dependent Role="detail_cmd">
+        <PropertyRef Name="id_cmd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_gov_ville">
+    <End Role="gouvernorat" Type="Self.gouvernorat" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ville" Type="Self.ville" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gouvernorat">
+        <PropertyRef Name="id_gov" />
+      </Principal>
+      <Dependent Role="ville">
+        <PropertyRef Name="id_gov" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_liv_com">
+    <End Role="livreur" Type="Self.livreur" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="commande" Type="Self.commande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livreur">
+        <PropertyRef Name="id_liv" />
+      </Principal>
+      <Dependent Role="commande">
+        <PropertyRef Name="id_liv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_livreur_note">
+    <End Role="livreur" Type="Self.livreur" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="note_livreure" Type="Self.note_livreure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livreur">
+        <PropertyRef Name="id_liv" />
+      </Principal>
+      <Dependent Role="note_livreure">
+        <PropertyRef Name="id_liv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_plat_note">
+    <End Role="platss" Type="Self.platss" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="note_plat" Type="Self.note_plat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="platss">
+        <PropertyRef Name="id_platss" />
+      </Principal>
+      <Dependent Role="note_plat">
+        <PropertyRef Name="id_platss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_resto_note">
+    <End Role="resto" Type="Self.resto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="note_resto" Type="Self.note_resto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resto">
+        <PropertyRef Name="id_resto" />
+      </Principal>
+      <Dependent Role="note_resto">
+        <PropertyRef Name="id_resto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_resto_platss">
+    <End Role="resto" Type="Self.resto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="platss" Type="Self.platss" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="resto">
+        <PropertyRef Name="id_resto" />
+      </Principal>
+      <Dependent Role="platss">
+        <PropertyRef Name="id_resto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sp_resto">
+    <End Role="specialite" Type="Self.specialite" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="resto" Type="Self.resto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="specialite">
+        <PropertyRef Name="id_sp" />
+      </Principal>
+      <Dependent Role="resto">
+        <PropertyRef Name="id_sp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_trace_liv">
+    <End Role="livreur" Type="Self.livreur" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trace_liv" Type="Self.trace_liv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livreur">
+        <PropertyRef Name="id_liv" />
+      </Principal>
+      <Dependent Role="trace_liv">
+        <PropertyRef Name="id_liv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="base_quickModelStoreContainer">
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="commande" EntityType="Self.commande" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detail_cmd" EntityType="Self.detail_cmd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gouvernorat" EntityType="Self.gouvernorat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="livreur" EntityType="Self.livreur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="note_livreure" EntityType="Self.note_livreure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="note_plat" EntityType="Self.note_plat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="note_resto" EntityType="Self.note_resto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="platss" EntityType="Self.platss" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="resto" EntityType="Self.resto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="specialite" EntityType="Self.specialite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trace_liv" EntityType="Self.trace_liv" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ville" EntityType="Self.ville" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_cl_ville" Association="Self.FK_cl_ville">
+      <End Role="ville" EntitySet="ville" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cmd_clt" Association="Self.FK_cmd_clt">
+      <End Role="client" EntitySet="client" />
+      <End Role="commande" EntitySet="commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_platss_dcmd" Association="Self.FK_dbo_platss_dcmd">
+      <End Role="platss" EntitySet="platss" />
+      <End Role="detail_cmd" EntitySet="detail_cmd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_detcom_com" Association="Self.FK_detcom_com">
+      <End Role="commande" EntitySet="commande" />
+      <End Role="detail_cmd" EntitySet="detail_cmd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_gov_ville" Association="Self.FK_gov_ville">
+      <End Role="gouvernorat" EntitySet="gouvernorat" />
+      <End Role="ville" EntitySet="ville" />
+    </AssociationSet>
+    <AssociationSet Name="FK_liv_com" Association="Self.FK_liv_com">
+      <End Role="livreur" EntitySet="livreur" />
+      <End Role="commande" EntitySet="commande" />
+    </AssociationSet>
+    <AssociationSet Name="FK_livreur_note" Association="Self.FK_livreur_note">
+      <End Role="livreur" EntitySet="livreur" />
+      <End Role="note_livreure" EntitySet="note_livreure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_plat_note" Association="Self.FK_plat_note">
+      <End Role="platss" EntitySet="platss" />
+      <End Role="note_plat" EntitySet="note_plat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_resto_note" Association="Self.FK_resto_note">
+      <End Role="resto" EntitySet="resto" />
+      <End Role="note_resto" EntitySet="note_resto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_resto_platss" Association="Self.FK_resto_platss">
+      <End Role="resto" EntitySet="resto" />
+      <End Role="platss" EntitySet="platss" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sp_resto" Association="Self.FK_sp_resto">
+      <End Role="specialite" EntitySet="specialite" />
+      <End Role="resto" EntitySet="resto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trace_liv" Association="Self.FK_trace_liv">
+      <End Role="livreur" EntitySet="livreur" />
+      <End Role="trace_liv" EntitySet="trace_liv" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

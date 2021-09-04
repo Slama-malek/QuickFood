@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81385030f2a6486fa339e61d8ade77ce" Name="Diagram1">
+        <EntityTypeShape EntityType="base_quickModel.client" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.commande" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.detail_cmd" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.gouvernorat" Width="1.5" PointX="1.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.livreur" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.note_livreure" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.note_plat" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.note_resto" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.platss" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.resto" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.specialite" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.Table" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.trace_liv" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="base_quickModel.ville" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="base_quickModel.FK_cl_ville" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_cmd_clt" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_detcom_com" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_liv_com" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_dbo_platss_dcmd" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_gov_ville" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_livreur_note" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_trace_liv" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_plat_note" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_resto_note" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_resto_platss" ManuallyRouted="false" />
+        <AssociationConnector Association="base_quickModel.FK_sp_resto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="base_quickModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="idclient" />
+    </Key>
+    <Property Name="idclient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_pre_client" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel_client" Type="nvarchar" MaxLength="50" />
+    <Property Name="adr_cl" Type="nvarchar" MaxLength="50" />
+    <Property Name="email_cl" Type="nvarchar" MaxLength="50" />
+    <Property Name="date_nai_cl" Type="datetime" />
+    <Property Name="sexe_cl" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_ville" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gouvernorat">
+    <Key>
+      <PropertyRef Name="id_gov" />
+    </Key>
+    <Property Name="id_gov" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_gov" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ville">
+    <Key>
+      <PropertyRef Name="id_ville" />
+    </Key>
+    <Property Name="id_ville" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_ville" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_gov" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_cl_ville">
+    <End Role="ville" Type="Self.ville" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ville">
+        <PropertyRef Name="id_ville" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="id_ville" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_gov_ville">
+    <End Role="gouvernorat" Type="Self.gouvernorat" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ville" Type="Self.ville" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gouvernorat">
+        <PropertyRef Name="id_gov" />
+      </Principal>
+      <Dependent Role="ville">
+        <PropertyRef Name="id_gov" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="base_quickModelStoreContainer">
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gouvernorat" EntityType="Self.gouvernorat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ville" EntityType="Self.ville" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_cl_ville" Association="Self.FK_cl_ville">
+      <End Role="ville" EntitySet="ville" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_gov_ville" Association="Self.FK_gov_ville">
+      <End Role="gouvernorat" EntitySet="gouvernorat" />
+      <End Role="ville" EntitySet="ville" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

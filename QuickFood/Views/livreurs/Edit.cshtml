@@ -1,0 +1,52 @@
+﻿@model QuickFood.Models.livreur
+
+@{
+    ViewBag.Title = "Modifier";
+}
+
+<h2>Modifier</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>livreur</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id_liv)
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Nom </strong>
+            </div>            <div class="col-md-10">
+                @Html.EditorFor(model => model.nom_liv, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nom_liv, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Téléhpone</strong>
+            </div>                  <div class="col-md-10">
+                @Html.EditorFor(model => model.tel_liv, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tel_liv, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sauvegarder" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("RETOUR À LA LISTE", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

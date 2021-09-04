@@ -1,0 +1,39 @@
+﻿@model IEnumerable<QuickFood.Models.livreur>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Ajouter nouveau", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+          Nom Livreur
+        </th>
+        <th>
+           Télephone Livreur
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_liv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel_liv)
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "Edit", new { id=item.id_liv }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_liv }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.id_liv })
+        </td>
+    </tr>
+}
+
+</table>

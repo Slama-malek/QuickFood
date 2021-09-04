@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="base_quickModelStoreContainer" CdmEntityContainer="base_quickEntities8">
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="base_quickModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="idclient" ColumnName="idclient" />
+          <ScalarProperty Name="nom_pre_client" ColumnName="nom_pre_client" />
+          <ScalarProperty Name="tel_client" ColumnName="tel_client" />
+          <ScalarProperty Name="adr_cl" ColumnName="adr_cl" />
+          <ScalarProperty Name="email_cl" ColumnName="email_cl" />
+          <ScalarProperty Name="date_nai_cl" ColumnName="date_nai_cl" />
+          <ScalarProperty Name="sexe_cl" ColumnName="sexe_cl" />
+          <ScalarProperty Name="id_ville" ColumnName="id_ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commande">
+      <EntityTypeMapping TypeName="base_quickModel.commande">
+        <MappingFragment StoreEntitySet="commande">
+          <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+          <ScalarProperty Name="date_cmd" ColumnName="date_cmd" />
+          <ScalarProperty Name="type_pay" ColumnName="type_pay" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="long" ColumnName="long" />
+          <ScalarProperty Name="id_liv" ColumnName="id_liv" />
+          <ScalarProperty Name="idclient" ColumnName="idclient" />
+          <ScalarProperty Name="id_plat" ColumnName="id_plat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detail_cmd">
+      <EntityTypeMapping TypeName="base_quickModel.detail_cmd">
+        <MappingFragment StoreEntitySet="detail_cmd">
+          <ScalarProperty Name="id_ds" ColumnName="id_ds" />
+          <ScalarProperty Name="id_cmd" ColumnName="id_cmd" />
+          <ScalarProperty Name="id_platss" ColumnName="id_platss" />
+          <ScalarProperty Name="quantite" ColumnName="quantite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gouvernorat">
+      <EntityTypeMapping TypeName="base_quickModel.gouvernorat">
+        <MappingFragment StoreEntitySet="gouvernorat">
+          <ScalarProperty Name="id_gov" ColumnName="id_gov" />
+          <ScalarProperty Name="nom_gov" ColumnName="nom_gov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="livreur">
+      <EntityTypeMapping TypeName="base_quickModel.livreur">
+        <MappingFragment StoreEntitySet="livreur">
+          <ScalarProperty Name="id_liv" ColumnName="id_liv" />
+          <ScalarProperty Name="nom_liv" ColumnName="nom_liv" />
+          <ScalarProperty Name="tel_liv" ColumnName="tel_liv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="note_livreure">
+      <EntityTypeMapping TypeName="base_quickModel.note_livreure">
+        <MappingFragment StoreEntitySet="note_livreure">
+          <ScalarProperty Name="id_note_liv" ColumnName="id_note_liv" />
+          <ScalarProperty Name="note_liv" ColumnName="note_liv" />
+          <ScalarProperty Name="id_liv" ColumnName="id_liv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="note_plat">
+      <EntityTypeMapping TypeName="base_quickModel.note_plat">
+        <MappingFragment StoreEntitySet="note_plat">
+          <ScalarProperty Name="id_note_plat" ColumnName="id_note_plat" />
+          <ScalarProperty Name="note_plat1" ColumnName="note_plat" />
+          <ScalarProperty Name="id_platss" ColumnName="id_platss" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="note_resto">
+      <EntityTypeMapping TypeName="base_quickModel.note_resto">
+        <MappingFragment StoreEntitySet="note_resto">
+          <ScalarProperty Name="id_note_res" ColumnName="id_note_res" />
+          <ScalarProperty Name="note_res" ColumnName="note_res" />
+          <ScalarProperty Name="id_resto" ColumnName="id_resto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="platss">
+      <EntityTypeMapping TypeName="base_quickModel.platss">
+        <MappingFragment StoreEntitySet="platss">
+          <ScalarProperty Name="id_platss" ColumnName="id_platss" />
+          <ScalarProperty Name="nom_plat" ColumnName="nom_plat" />
+          <ScalarProperty Name="descrip_plat" ColumnName="descrip_plat" />
+          <ScalarProperty Name="prix_plat" ColumnName="prix_plat" />
+          <ScalarProperty Name="id_resto" ColumnName="id_resto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resto">
+      <EntityTypeMapping TypeName="base_quickModel.resto">
+        <MappingFragment StoreEntitySet="resto">
+          <ScalarProperty Name="id_resto" ColumnName="id_resto" />
+          <ScalarProperty Name="nom_resto" ColumnName="nom_resto" />
+          <ScalarProperty Name="tel_resto" ColumnName="tel_resto" />
+          <ScalarProperty Name="adr_resto" ColumnName="adr_resto" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="fourchette" ColumnName="fourchette" />
+          <ScalarProperty Name="id_sp" ColumnName="id_sp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialite">
+      <EntityTypeMapping TypeName="base_quickModel.specialite">
+        <MappingFragment StoreEntitySet="specialite">
+          <ScalarProperty Name="id_sp" ColumnName="id_sp" />
+          <ScalarProperty Name="nom_sp" ColumnName="nom_sp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table">
+      <EntityTypeMapping TypeName="base_quickModel.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trace_liv">
+      <EntityTypeMapping TypeName="base_quickModel.trace_liv">
+        <MappingFragment StoreEntitySet="trace_liv">
+          <ScalarProperty Name="id_trace" ColumnName="id_trace" />
+          <ScalarProperty Name="date_liv" ColumnName="date_liv" />
+          <ScalarProperty Name="heure_liv" ColumnName="heure_liv" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="id_liv" ColumnName="id_liv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ville">
+      <EntityTypeMapping TypeName="base_quickModel.ville">
+        <MappingFragment StoreEntitySet="ville">
+          <ScalarProperty Name="id_ville" ColumnName="id_ville" />
+          <ScalarProperty Name="nom_ville" ColumnName="nom_ville" />
+          <ScalarProperty Name="id_gov" ColumnName="id_gov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

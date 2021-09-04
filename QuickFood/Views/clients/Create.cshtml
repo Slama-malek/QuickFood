@@ -1,0 +1,102 @@
+﻿@model QuickFood.Models.client
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Creer</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>client</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Nom et prenom</strong>
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.nom_pre_client, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nom_pre_client, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Téléphone</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tel_client, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tel_client, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Adresse</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.adr_cl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.adr_cl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Email</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email_cl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email_cl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Date de Naissance</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.date_nai_cl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.date_nai_cl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Sexe</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sexe_cl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sexe_cl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <strong>Ville</strong>
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownList("id_ville", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_ville, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ajouter" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("RETOUR À LA LISTE", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

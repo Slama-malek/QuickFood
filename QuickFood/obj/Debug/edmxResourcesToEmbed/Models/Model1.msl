@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="base_quickModelStoreContainer" CdmEntityContainer="base_quickEntities1">
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="base_quickModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="idclient" ColumnName="idclient" />
+          <ScalarProperty Name="nom_pre_client" ColumnName="nom_pre_client" />
+          <ScalarProperty Name="tel_client" ColumnName="tel_client" />
+          <ScalarProperty Name="adr_cl" ColumnName="adr_cl" />
+          <ScalarProperty Name="email_cl" ColumnName="email_cl" />
+          <ScalarProperty Name="date_nai_cl" ColumnName="date_nai_cl" />
+          <ScalarProperty Name="sexe_cl" ColumnName="sexe_cl" />
+          <ScalarProperty Name="id_ville" ColumnName="id_ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gouvernorat">
+      <EntityTypeMapping TypeName="base_quickModel.gouvernorat">
+        <MappingFragment StoreEntitySet="gouvernorat">
+          <ScalarProperty Name="id_gov" ColumnName="id_gov" />
+          <ScalarProperty Name="nom_gov" ColumnName="nom_gov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ville">
+      <EntityTypeMapping TypeName="base_quickModel.ville">
+        <MappingFragment StoreEntitySet="ville">
+          <ScalarProperty Name="id_ville" ColumnName="id_ville" />
+          <ScalarProperty Name="nom_ville" ColumnName="nom_ville" />
+          <ScalarProperty Name="id_gov" ColumnName="id_gov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

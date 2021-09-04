@@ -1,0 +1,79 @@
+﻿@model QuickFood.Models.client
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+<h2>Delete</h2>
+
+<h3>Etes-vous sûr de vouloir supprimer ce?</h3>
+<div>
+    <h4>client</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+               Nom prenom Client   </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_pre_client)
+        </dd>
+
+        <dt>
+            Telephone Client    
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_client)
+        </dd>
+
+        <dt>
+            Adresse Client
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adr_cl)
+        </dd>
+
+        <dt>
+            Email Client
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_cl)
+        </dd>
+
+        <dt>
+            Date Naissance Client
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_nai_cl)
+        </dd>
+
+        <dt>
+            Sexe Client
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexe_cl)
+        </dd>
+
+        <dt>
+            Ville Client
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ville.nom_ville)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("RETOUR À LA LISTE", "Index")
+        </div>
+    }
+</div>
